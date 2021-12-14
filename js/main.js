@@ -74,7 +74,14 @@ function findPath(){
     let dest = document.getElementById("dest").value
     if(graph.nodes[dest] != undefined){
       let spath = shortestPath(graph,"CAN",dest)
-      document.getElementById("path").innerHTML = spath.join(" -> ")
+      let div = document.getElementById("path")
+      div.innerHTML = ""
+      // div.innerHTML = spath.join(" -> ")
+      for(let i = 1;i<spath.length;i++){
+        let entry = document.createElement('li')
+        entry.innerHTML = spath[i]
+        div.appendChild(entry)
+      }
     }else{
       document.getElementById("path").innerHTML = "No such destination"
     }
